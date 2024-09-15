@@ -85,6 +85,40 @@ body {
   display: none;
 }
 
+/* Navbar Search form */
+.navbar .search-form {
+  position: absolute;
+  top: 100%;
+  right: 7%;
+  background-color: #fff;
+  width: 50rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: 0.3s;
+}
+
+.navbar .search-form.active {
+  transform: scaleY(1);
+}
+
+.navbar .search-form input {
+  height: 100%;
+  width: 100%;
+  font-size: 1.3rem;
+  color: var(--bg);
+  padding: 1rem;
+}
+
+.navbar .search-form label {
+  cursor: pointer;
+  font-size: 2rem;
+  margin-right: 1.5rem;
+  color: var(--bg);
+}
+
 /* Hero Section */
 .hero {
   min-height: 100vh;
@@ -157,12 +191,14 @@ body {
 /* About Section */
 .about,
 .katalog,
+.karya,
 .kontak {
   padding: 8rem 7% 1.4rem;
 }
 
 .about h2,
 .katalog h2,
+.karya h2,
 .kontak h2 {
   text-align: center;
   font-size: 2rem;
@@ -171,6 +207,7 @@ body {
 
 .about h2 span,
 .katalog h2 span,
+.karya h2 span,
 .kontak h2 span {
   color: var(--primary);
 }
@@ -237,6 +274,65 @@ body {
 
 .katalog .row .katalog-card .katalog-card-title {
   margin-top: 1rem auto 0.5rem;
+}
+
+/* Karya Sectiom */
+.karya .row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+
+.karya .karya-card {
+  text-align: center;
+  border: 1px solid #666;
+  padding: 2rem;
+}
+
+.karya .karya-icon {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.karya .karya-icon a {
+  width: 4rem;
+  height: 4rem;
+  color: #fff;
+  margin: 0.3rem;
+  border: 1px solid #666;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.karya .karya-icon a:hover {
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.karya .karya-image {
+  padding: 1rem 0;
+}
+
+.karya .karya-image img {
+  height: 25rem;
+}
+
+.karya .karya-content h3 {
+  font-size: 1.9rem;
+}
+
+.karya .karya-stars {
+  font-size: 1.7rem;
+  padding: 0.8rem;
+  color: var(--primary);
+}
+
+.karya .karya-stars .star-full {
+  fill: var(--primary);
 }
 
 /* Kontak Section */
@@ -325,6 +421,65 @@ footer .credit a {
   font-weight: 700;
 }
 
+/* Modal Box */
+/* Item Detail */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-container {
+  position: relative;
+  background-color: #ffffff;
+  color: var(--bg);
+  margin: 15% auto;
+  padding: 1.2rem;
+  border: 1px solid #666;
+  width: 80%;
+  animation: animateModal 0.4s;
+}
+
+/* Modal Animation */
+@keyframes animateModal {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+}
+to {
+  top: 0;
+  opacity: 1;
+}
+
+.modal-container .close-icon {
+  position: absolute;
+  right: 1rem;
+}
+
+.modal-content {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.modal-content img {
+  height: 16.5rem;
+  margin-right: 2rem;
+  margin-bottom: 5rem;
+}
+
+.modal-content p {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  margin-top: 1.2rem;
+}
+
 /* Media Queries */
 /* Laptop */
 @media (max-width: 1366px) {
@@ -373,6 +528,11 @@ footer .credit a {
     transform: scaleX(0.2);
   }
 
+  .navbar .search-form {
+    width: 90%;
+    right: 2rem;
+  }
+
   .about .row {
     flex-wrap: wrap;
   }
@@ -409,6 +569,10 @@ footer .credit a {
 
   .kontak .row form {
     padding-top: 0;
+  }
+
+  .modal-content {
+    flex-wrap: wrap;
   }
 }
 
